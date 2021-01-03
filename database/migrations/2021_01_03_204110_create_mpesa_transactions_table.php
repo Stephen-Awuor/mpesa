@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateMpesaTransactionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('mpesa_transactions', function (Blueprint $table) {
+            $table->id();
+            $table->string('TransactionType');
+            $table->string('TransID');
+            $table->string('TransTime');
+            $table->decimal('TransAmount', 8,2);
+            $table->string('BusinessShortCode');
+            $table->string('BillRefNumber');
+            $table->string('InvoiceNumber');
+            $table->decimal('OrgAccountBalance',8,2);
+            $table->string('ThirdPartyTransID');
+            $table->string('MSISDN');
+            $table->string('FirstName');
+            $table->string('MiddleName');
+            $table->string('LastName');
+            $table->timestamps();
+        });
+    }
+//php artisan migrate:fresh - rolls back tables/previous migration then creates a new one.
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('mpesa_transactions');
+    }
+}
