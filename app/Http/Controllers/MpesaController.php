@@ -23,7 +23,7 @@ class MpesaController extends Controller
     }
     public function newAccessToken(){
         $consumer_key = "blKEE6atNdxXsGREaEppvG1OqfaKO6AB"; //from your app in developer portal.
-        $consumer_secret = "pVCBHzcPbL4oTDCm";
+        $consumer_secret = "pVCBHzcPbL4oTDCm"; //from your app in developer portal.
         $credentials = base64_encode($consumer_key.":".$consumer_secret);//":" is for concatination
         $url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
 
@@ -58,7 +58,7 @@ class MpesaController extends Controller
             'PartyA' => $phoneNumber, // or 254729952303
             'PartyB' => 174379,
             'PhoneNumber' => $phoneNumber, // or 254729952303
-            'CallBackURL' => 'https://7db63514dbd1.ngrok.io/api/stk/push/callback/url',// If user enters the details correctly, it's processed and sent here and return message is generated
+            'CallBackURL' => 'https://7db63514dbd1.ngrok.io/api/stk/push/callback/url',//ngrok makes your local development machine securely accessible from the public Internet. This url listens to requests, If user enters the details correctly, it's processed and sent here and return message is generated
             'AccountReference' => "Simon's Tech School Payment", //Name of the business when confirmation to pay appears
             'TransactionDesc' => "lipa Na M-PESA" //Transaction (In bellow codes, the data is encoded before being sent)
         ];
@@ -72,4 +72,6 @@ class MpesaController extends Controller
         $curl_response = curl_exec($curl);
         return redirect('/confirm');    
      }  
+     public function MpesaRes(Request $request){
+     }
 }

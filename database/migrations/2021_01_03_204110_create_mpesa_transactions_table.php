@@ -28,6 +28,7 @@ class CreateMpesaTransactionsTable extends Migration
             $table->string('FirstName');
             $table->string('MiddleName');
             $table->string('LastName');
+            $table->text('response');
             $table->timestamps();
         });
     }
